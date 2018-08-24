@@ -33,8 +33,9 @@ describe('answerQuestions', function () {
 
   it('should return a single error as an object questions', function () {
     const questions = 'Will it rain?,,Will I find $10 today?'
-    const result = () => main.answerQuestions(questions)
+    const result = main.answerQuestions(questions)
 
-    expect(result).to.throw
+    expect(result).to.eventually.be.rejected
+    expect(result).to.eventually.have.property('error')
   })
 })
